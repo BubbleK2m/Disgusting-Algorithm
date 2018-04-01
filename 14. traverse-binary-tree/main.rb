@@ -15,7 +15,6 @@ class DualLinkedList
         # 디버깅을 위한 to_s 메서드
         # puts 로 객체 출력 시 아래와 같은 문자열 반환
         # data: A, left: B, right: . 
-
         "data: #{@data}, " + 
         "left: #{!@left.nil? ? @left.data : '.'}, " + 
         "right: #{!@right.nil? ? @right.data : '.'}"
@@ -148,5 +147,5 @@ root = get_tree_from_dual_linked_list(len)
 traversal_tree(root, :pre)
 
 # 중위 순회 ()
-traversal_tree(root, :in)
-traversal_tree(root, :post)
+# traversal_tree(root, :in)
+# traversal_tree(root, :post)
