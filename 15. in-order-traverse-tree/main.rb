@@ -1,7 +1,7 @@
-# 15. 트리의 전위 순회
+# 15. 트리의 중위 순회
 
 # 이진 트리에서 root, left, right 노드가 있을 때
-# root -> left -> right 순서로 트리를 순회
+# left -> root -> right 순서로 트리를 순회
 
 # - ex -
 
@@ -16,10 +16,10 @@
 #  B C
 # D   E
 
-# 그리고 rott -> left -> right 순서로 노드를 방문해
+# 그리고 left -> root -> right 순서로 노드를 방문해
 # ↓ 같은 출력을 구하자
 
-# A B D C E
+# D B A C E
 
 
 # 트리를 구현하기 위한 이중 연결 리스트 객체
@@ -88,8 +88,8 @@ def get_tree_from_dual_linked_list(len)
     return nodes[0]
 end
 
-# 트리를 전위 순회하는 함수
-# root, left, right 순서로 노드를 방문
+# 트리를 중위 순회하는 함수
+# left, root, right 순서로 노드를 방문
 def pre_order_traverse_tree(root)
      # 현재 노드의 부모 노드를 추적하기 위한 스택(배열)
      stack = []
@@ -102,9 +102,6 @@ def pre_order_traverse_tree(root)
          # stack에 노드들을 저장
          stack.push cnode
  
-         # 현재 루트 노드를 먼저 방문
-         print "#{cnode.data} "
- 
          # 우선 좌측의 자식 노드를 추적
          unless cnode.left.nil?
              # cnode를 좌측 자식 노드로 설정함으로써
@@ -115,13 +112,16 @@ def pre_order_traverse_tree(root)
  
          # 우측 자식 노드를 탐색하는 안쪽 루프
          loop do
-             # 전, 중위 노드는 스택 최상위에 저장한 노드를 꺼냄
+             # 스택 최상위에 저장한 노드를 꺼냄
              cnode = stack.pop
  
              # 스택이 빌 경우는 루트 노드까지 순회가 끝났다는 것
              # 따라서 추적을 중지
              break if cnode.nil?
  
+             # 좌측 노드부터 방문
+             print "#{cnode.data}"
+
              # 우측 노드 탐색
              unless cnode.right.nil?
                 cnode = cnode.right

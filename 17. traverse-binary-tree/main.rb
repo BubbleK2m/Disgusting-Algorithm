@@ -99,10 +99,10 @@ def traversal_tree(root, order)
 
         # 우측 자식 노드를 탐색하는 안쪽 루프
         loop do
-            # 후위 노드는 우선 추적한 자식 노드를 방문
+            # 후위 순회는 우선 추적한 자식 노드를 방문
             print "#{cnode.data} " if order == :post
             
-            # 전, 중위 노드는 스택 최상위에 저장한 노드를 꺼냄
+            # 스택 최상위에 저장한 노드를 꺼냄
             cnode = stack.pop
 
             # 스택이 빌 경우는 루트 노드까지 순회가 끝났다는 것
@@ -144,8 +144,10 @@ len = Integer(gets)
 root = get_tree_from_dual_linked_list(len)
 
 # 전위 순회 (pre order traversal)
-traversal_tree(root, :pre)
+#traversal_tree(root, :pre)
 
-# 중위 순회 ()
+# 중위 순회 (in order traversal)
 # traversal_tree(root, :in)
-# traversal_tree(root, :post)
+
+# 후위 순회 (post order traversal)
+traversal_tree(root, :post)
